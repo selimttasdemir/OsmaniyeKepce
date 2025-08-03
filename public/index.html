@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kepçe Hizmeti</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+  <style>
+    body { scroll-behavior: smooth; font-family: 'Segoe UI', sans-serif; }
+    header { position: sticky; top: 0; z-index: 999; background: #212529; }
+    header a { color: white !important; margin: 0 15px; }
+    section { padding: 60px 0; }
+    .carousel-item img { height: 500px; object-fit: cover; }
+    .services i { font-size: 48px; color: #f0ad4e; margin-bottom: 20px; }
+    footer { background: #212529; color: white; padding: 30px 0; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark container">
+      <a class="navbar-brand" href="#">Kepçe Hizmeti</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#slider">Ana Sayfa</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Hizmetler</a></li>
+          <li class="nav-item"><a class="nav-link" href="#offer">Fiyat Teklifi</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">İletişim</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Slider -->
+  <section id="slider">
+    <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="https://www.srcbelgesi.web.tr/wp-content/uploads/2023/05/Kepce-Nasil-Kullanilir.jpg" class="d-block w-100" alt="slider1" />
+        </div>
+        <div class="carousel-item">
+          <img src="https://doganerinsaat.com/wp-content/uploads/2020/10/Kepce-Kiralama-Fiyatlari-3.jpg" class="d-block w-100" alt="slider2" />
+        </div>
+        <div class="carousel-item">
+          <img src="https://ozcelebiharfiyat.com/wp-content/uploads/2024/12/kepce.jpg" class="d-block w-100" alt="slider3" />
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Hizmetler -->
+  <section id="services" class="services text-center bg-light">
+    <div class="container">
+      <h2 class="mb-5">Hizmetlerimiz</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <i class="fas fa-dumpster"></i>
+          <h4>Toprak Taşıma</h4>
+          <p>Arazinizdeki hafriyat işlerini profesyonelce gerçekleştiriyoruz.</p>
+        </div>
+        <div class="col-md-4">
+          <i class="fas fa-road"></i>
+          <h4>Yol Açma</h4>
+          <p>Yeni yollar ve altyapı çalışmaları için bizimle iletişime geçin.</p>
+        </div>
+        <div class="col-md-4">
+          <i class="fas fa-water"></i>
+          <h4>Kanallar ve Kazı</h4>
+          <p>Su kanalı ve temel kazılarında kepçelerimizle hizmet veriyoruz.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fiyat Teklifi Formu -->
+  <section id="offer" class="text-center">
+    <div class="container">
+      <h2 class="mb-4">Fiyat Teklifi Al</h2>
+      <form id="offerForm" novalidate>
+        <div class="row g-3 justify-content-center">
+          <div class="col-md-4">
+            <input type="text" name="name" class="form-control" placeholder="Ad Soyad *" required />
+            <div class="invalid-feedback">Ad Soyad zorunludur.</div>
+          </div>
+
+          <div class="col-md-4">
+            <input type="email" name="email" class="form-control" placeholder="E-posta (Opsiyonel)" />
+          </div>
+
+          <div class="col-md-4">
+            <input
+              type="tel"
+              name="phone"
+              class="form-control"
+              placeholder="Telefon *"
+              pattern="[0-9]{10,15}"
+              required
+            />
+            <div class="invalid-feedback">Geçerli telefon numarası giriniz (sadece rakam, 10-15 hane).</div>
+          </div>
+
+          <div class="col-md-6">
+            <select name="service" class="form-select" required>
+              <option value="" disabled selected>Hizmet seçin *</option>
+              <option value="Kuyu Açma">Kuyu Açma</option>
+              <option value="Temel Kazma">Temel Kazma</option>
+              <option value="Yol Açma">Yol Açma</option>
+              <option value="Altyapı Kazısı">Altyapı Kazısı</option>
+              <option value="Dolgu İşleri">Dolgu İşleri</option>
+              <option value="Moloz Taşıma">Moloz Taşıma</option>
+              <option value="Yıkım">Yıkım</option>
+              <option value="Diğer">Diğer</option>
+            </select>
+            <div class="invalid-feedback">Lütfen bir hizmet seçin.</div>
+          </div>
+
+          <div class="col-md-8">
+            <textarea
+              name="message"
+              class="form-control"
+              rows="4"
+              placeholder="Mesajınız (Opsiyonel)"
+            ></textarea>
+          </div>
+
+          <div class="col-12 text-center">
+            <button type="submit" class="btn btn-warning px-5">Gönder</button>
+          </div>
+        </div>
+      </form>
+
+      <div id="offerAlert" class="alert alert-success mt-3 d-none" role="alert">
+        Mesajınız iletilmiştir. Teşekkürler!
+      </div>
+    </div>
+  </section>
+
+  <!-- İletişim -->
+  <section id="contact" class="bg-light">
+    <div class="container">
+      <h2 class="text-center mb-4">İletişim</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <ul class="list-unstyled fs-5">
+            <li><i class="fas fa-phone"></i> Telefon: <a href="tel:+905551112233">+90 555 111 22 33</a></li>
+            <li><i class="fas fa-envelope"></i> E-posta: <a href="mailto:info@kepcehizmeti.com">info@kepcehizmeti.com</a></li>
+            <li><i class="fab fa-instagram"></i> Instagram: <a href="#">@kepcehizmeti</a></li>
+            <li><i class="fab fa-facebook"></i> Facebook: <a href="#">/kepcehizmeti</a></li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <iframe
+            width="100%"
+            height="250"
+            frameborder="0"
+            style="border:0"
+            src="https://maps.google.com/maps?q=osmaniye&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <div class="container">
+      <p>&copy; 2025 Kepçe Hizmeti | Tüm Hakları Saklıdır.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+/* Genel Ayarlar */
+body {
+    scroll-behavior: smooth;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Navbar */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    background-color: #212529;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  }
+  
+  header .navbar-brand {
+    font-weight: 700;
+    font-size: 1.6rem;
+  }
+  
+  header .navbar-nav .nav-link {
+    color: #fff !important;
+    font-weight: 600;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+  }
+  
+  header .navbar-nav .nav-link:hover {
+    color: #f0ad4e !important;
+  }
+  
+  /* Genel Section Ayarı */
+  section {
+    padding: 100px 0;
+    min-height: 650px;
+  }
+  
+  /* Slider */
+  #slider {
+    margin-bottom: 50px;
+  }
+  
+  #slider .carousel-item img {
+    width: 100%;
+    height: 700px;
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 5px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Hizmetler */
+  .services {
+    background-color: #fff;
+    text-align: center;
+  }
+  
+  .services h2 {
+    margin-bottom: 50px;
+    font-weight: 700;
+    font-size: 2.8rem;
+    color: #212529;
+  }
+  
+  .services .row > div {
+    padding: 30px 15px;
+    transition: transform 0.3s ease;
+    cursor: default;
+  }
+  
+  .services .row > div:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 12px 25px rgba(240, 173, 78, 0.3);
+    border-radius: 10px;
+    background-color: #fff8e1;
+  }
+  
+  .services i {
+    font-size: 60px;
+    color: #f0ad4e;
+    margin-bottom: 25px;
+  }
+  
+  /* Fiyat Teklifi */
+  #offer {
+    background-color: #fff;
+  }
+  
+  #offer h2 {
+    font-weight: 700;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+    color: #212529;
+  }
+  
+  #offer form .form-control,
+  #offer form .form-select,
+  #offer form textarea {
+    border-radius: 6px;
+    box-shadow: none;
+    transition: box-shadow 0.3s ease;
+    font-size: 1.1rem;
+    padding: 12px 15px;
+  }
+  
+  #offer form .form-control:focus,
+  #offer form .form-select:focus,
+  #offer form textarea:focus {
+    box-shadow: 0 0 8px #f0ad4e;
+    border-color: #f0ad4e;
+    outline: none;
+  }
+  
+  #offer button.btn-warning {
+    font-weight: 600;
+    font-size: 1.2rem;
+    padding: 12px 40px;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+  }
+  
+  #offer button.btn-warning:hover {
+    background-color: #ec971f;
+    box-shadow: 0 5px 15px rgba(236, 151, 31, 0.5);
+  }
+  
+  #offerAlert {
+    font-weight: 600;
+    font-size: 1.2rem;
+    border-radius: 6px;
+    box-shadow: 0 3px 10px rgba(40, 167, 69, 0.4);
+  }
+  
+  /* İletişim */
+  #contact {
+    background-color: #fefefe;
+  }
+  
+  #contact h2 {
+    font-weight: 700;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+    color: #212529;
+  }
+  
+  #contact ul {
+    list-style: none;
+    padding-left: 0;
+    font-size: 1.2rem;
+  }
+  
+  #contact ul li {
+    margin-bottom: 20px;
+  }
+  
+  #contact ul li i {
+    color: #f0ad4e;
+    margin-right: 10px;
+    width: 25px;
+    text-align: center;
+  }
+  
+  #contact a {
+    color: #212529;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  #contact a:hover {
+    color: #f0ad4e;
+    text-decoration: underline;
+  }
+  
+  #contact iframe {
+    width: 100%;
+    height: 400px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #212529;
+    color: #f8f9fa;
+    padding: 40px 0;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  
+  /* Responsive */
+  @media (max-width: 992px) {
+    #slider .carousel-item img {
+      height: 450px;
+    }
+  
+    #contact iframe {
+      height: 300px;
+    }
+  
+    .services .row > div {
+      margin-bottom: 40px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    header .navbar-nav {
+      text-align: center;
+    }
+  
+    header .navbar-nav .nav-link {
+      margin: 10px 0;
+    }
+  
+    #slider .carousel-item img {
+      height: 300px;
+    }
+  
+    #offer form .row > div {
+      margin-bottom: 20px;
+    }
+  }
+  

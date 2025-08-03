@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Paneli</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f2f2f2;
+    }
+
+    header {
+      background-color: #343a40;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      padding: 12px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    .error {
+      color: red;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .logout {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      color: white;
+      text-decoration: underline;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Admin Paneli</h1>
+    <a class="logout" href="/admin-logout">Çıkış Yap</a>
+  </header>
+
+  <main>
+    <h2>Gelen Mesajlar</h2>
+    <div id="error" class="error"></div>
+    <table>
+      <thead>
+        <tr>
+          <th>Ad Soyad</th>
+          <th>Telefon</th>
+          <th>Email</th>
+          <th>Hizmet</th>
+          <th>Mesaj</th>
+          <th>Tarih</th>
+        </tr>
+      </thead>
+      <tbody id="messageTable">
+        <!-- JS ile doldurulacak -->
+      </tbody>
+    </table>
+  </main>
+
+  <script>
+    fetch('/api/messages')
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Yetkisiz erişim veya oturum süresi doldu.');
+        }
+        return res.json();
+      })
+      .then(data => {
+        const table = document.getElementById('messageTable');
+        if (data.length === 0) {
+          document.getElementById('error').textContent = 'Henüz mesaj bulunamadı.';
+        } else {
+          data.reverse().forEach(msg => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td>${msg.name || '-'}</td>
+              <td>${msg.phone || '-'}</td>
+              <td>${msg.email || '-'}</td>
+              <td>${msg.service || '-'}</td>
+              <td>${(msg.message || '').replace(/\n/g, '<br>')}</td>
+              <td>${new Date(msg.timestamp).toLocaleString('tr-TR')}</td>
+            `;
+            table.appendChild(row);
+          });
+        }
+      })
+      .catch(err => {
+        document.getElementById('error').textContent = err.message;
+      });
+  </script>
+</body>
+</html>
