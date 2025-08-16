@@ -8,8 +8,23 @@ const app = express();
 const PORT = 3000;
 
 // Basit kullanıcı doğrulaması için bilgiler
-const ADMIN_USER = 'admin';
-const ADMIN_PASS = '1234';
+const bcrypt = require('bcryptjs');
+const ADMIN_DB_FILE = path.join(__dirname, 'admin.db');
+function getAdminInfo() {
+  if (fs.existsSync(ADMIN_DB_FILE)) {
+    try {
+      const data = JSON.parse(fs.readFileSync(ADMIN_DB_FILE, 'utf8'));
+      return { username: data.username, hash: data.hash };
+    } catch (e) {}
+  }
+  // Varsayılan admin ekle
+  const defaultAdmin = {
+    username: 'admin',
+    hash: bcrypt.hashSync('1234', 10)
+  };
+  fs.writeFileSync(ADMIN_DB_FILE, JSON.stringify(defaultAdmin, null, 2), 'utf8');
+  return defaultAdmin;
+}
 
 // Mesajları dosyada tut
 const MSG_FILE = path.join(__dirname, 'messages.db');
@@ -47,14 +62,32 @@ app.get('/admin-login', (req, res) => {
 });
 
 // Giriş formunu POST ile kontrol et
+// Brute-force koruması: oturum başına deneme sayısı ve kilit
+const MAX_ATTEMPTS = 5;
+const LOCK_TIME = 5 * 60 * 1000; // 5 dakika
+
 app.post('/admin-login', (req, res) => {
   const { username, password } = req.body;
+  if (!req.session.loginAttempts) req.session.loginAttempts = 0;
+  if (!req.session.lockedUntil) req.session.lockedUntil = 0;
 
-  if (username === ADMIN_USER && password === ADMIN_PASS) {
+  if (Date.now() < req.session.lockedUntil) {
+    return res.send('<h3>Çok fazla deneme! Lütfen birkaç dakika sonra tekrar deneyin.</h3>');
+  }
+
+  const admin = getAdminInfo();
+  if (username === admin.username && bcrypt.compareSync(password, admin.hash)) {
     req.session.loggedIn = true;
+    req.session.loginAttempts = 0;
+    req.session.lockedUntil = 0;
     res.redirect('/admin');
   } else {
-    res.send('<h3>Hatalı giriş bilgileri. <a href="/admin-login">Tekrar dene</a></h3>');
+    req.session.loginAttempts++;
+    if (req.session.loginAttempts >= MAX_ATTEMPTS) {
+      req.session.lockedUntil = Date.now() + LOCK_TIME;
+      return res.send('<h3>Çok fazla hatalı deneme! 5 dakika sonra tekrar deneyin.</h3>');
+    }
+    res.send(`<h3>Hatalı giriş bilgileri. (${req.session.loginAttempts}/${MAX_ATTEMPTS}) <a href="/admin-login">Tekrar dene</a></h3>`);
   }
 });
 
