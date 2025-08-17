@@ -19,6 +19,24 @@
   .carousel-item img, .carousel-item video { height: 700px; object-fit: cover; width: 100%; }
     .services i { font-size: 48px; color: #f0ad4e; margin-bottom: 20px; }
     footer { background: #212529; color: white; padding: 30px 0; }
+
+    /* Referanslar hover efekti */
+    .referans-card {
+      transition: background 0.3s, color 0.3s;
+    }
+    .referans-card:hover {
+      background: linear-gradient(90deg, #ffb347 0%, #ffcc80 50%, #ff7043 100%);
+      color: #fff;
+      box-shadow: 0 4px 24px #ff980033;
+      cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path fill="%23ff7043" d="M23.6 5.6c-2.1 0-4.1 1-5.6 2.7C16.5 6.6 14.5 5.6 12.4 5.6 8.6 5.6 6 8.6 6 12.1c0 6.2 9.6 12.3 11.1 13.2.3.2.8.2 1.1 0 1.5-.9 11.1-7 11.1-13.2 0-3.5-2.6-6.5-6.4-6.5z"/></svg>') 16 16, pointer;
+    }
+    .referans-card:hover .card-title {
+      color: #fff !important;
+      text-shadow: 0 2px 8px #d3540099;
+    }
+    .referans-card:hover .card-text {
+      color: #fff !important;
+    }
   </style>
 </head>
 <body>
@@ -27,7 +45,7 @@
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark container">
   <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
-    <img src="img/logo.png" alt="Logo" style="height:72px;width:72px;margin-right:16px;border-radius:16px;object-fit:contain;box-shadow:0 2px 8px #f0ad4e33;" />
+    <img src="img/logo.png" alt="Logo" style="height:90px;width:auto;margin-right:18px;border-radius:50px;object-fit:cover;box-shadow:0 2px 12px #f0ad4e33;" />
     Akkoç Harfiyat
   </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -205,7 +223,7 @@
             <h3 class="mb-4">Referanslarımız</h3>
             <div class="row g-4">
               <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm">
+                <div class="card h-100 border-0 shadow-sm referans-card">
                   <div class="card-body">
                     <h5 class="card-title">Osmaniye Belediyesi</h5>
                     <p class="card-text">Altyapı ve yol açma projelerinde çözüm ortağı.</p>
@@ -213,7 +231,7 @@
                 </div>
               </div>
               <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm">
+                <div class="card h-100 border-0 shadow-sm referans-card">
                   <div class="card-body">
                     <h5 class="card-title">Ademoğlu İnşaat</h5>
                     <p class="card-text">Temel kazı ve dolgu işlerinde işbirliği.</p>
@@ -221,7 +239,7 @@
                 </div>
               </div>
               <div class="col-md-4">
-                <div class="card h-100 border-0 shadow-sm">
+                <div class="card h-100 border-0 shadow-sm referans-card">
                   <div class="card-body">
                     <h5 class="card-title">Meriç Yapı-Market/Hırdavat/Tarım</h5>
                     <p class="card-text">Arazi düzenleme ve kanal açma hizmetleri.</p>
@@ -288,8 +306,9 @@
   <!-- Footer -->
   <footer class="text-center">
     <div class="container">
-      <img src="img/logo.png" alt="Logo" style="height:64px;width:64px;margin-bottom:12px;border-radius:12px;object-fit:contain;" />
+      <img src="img/logo.png" alt="Logo" style="height:90px;width:auto;margin-bottom:16px;border-radius:50px;object-fit:cover;box-shadow:0 2px 12px #f0ad4e33;" />
       <p>&copy; 2025 Harfiyat Hizmeti | Osmaniye | Tüm Hakları Saklıdır.</p>
+      <small class="text">Designed by <a href="https://burkutsoft.com" target="_blank" rel="noopener" class="text-warning text-decoration-none">burkutsoft.com</a></small>
     </div>
   </footer>
 
